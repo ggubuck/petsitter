@@ -1,7 +1,8 @@
-package com.pet.sitter.member.entity;
+package com.pet.sitter.mainboard.entity;
 
-import com.pet.sitter.mainboard.PetSitter;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Member {
@@ -34,6 +35,8 @@ public class Member {
     @Column
     private String isshow;
 
-    @OneToMany
-    private PetSitter petSitter;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Petsitter> petsitterList;
+
+
 }

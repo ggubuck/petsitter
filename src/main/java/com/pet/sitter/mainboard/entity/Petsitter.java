@@ -1,11 +1,11 @@
-package com.pet.sitter.mainboard;
+package com.pet.sitter.mainboard.entity;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class PetSitter {
+public class Petsitter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,24 +23,30 @@ public class PetSitter {
     @Column
     private LocalDateTime pet_date;
 
-    @Column
-    private Integer pet_view_cnt;
+    @Column(name="pet_viewCnt")
+    private Integer pet_viewCnt;
 
     @Column
-    private Integer like;
+    private Integer pet_like;
 
     @Column
     private Integer price;
 
     @Column
-    private String id;
-
-    @Column
     private String pet_category;
 
     @Column
-    private LocalDateTime star_time;
+    private LocalDateTime start_time;
 
     @Column
     private LocalDateTime end_time;
+
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Member member;
+
+    @ManyToOne
+    @JoinColumn(name="pet_address_no")
+    private AreaSearch areaSearch;
+
 }
